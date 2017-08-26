@@ -1,0 +1,28 @@
+<div class="mask">
+  <div class="back_button">
+    <p><a href="/">X</a></p>
+  </div>
+  <div class="create_snippet">
+    <form class="snippet_form" action="/save" method="post">
+      <h2>Create your snippet</h2>
+      <input id="snippet_title" type="text" name="title" placeholder="Title" autofocus>
+      <textarea name="code" rows="10" cols="50" placeholder="Enter your snippet here"></textarea>
+      <textarea name="notes" rows="4" cols="50" placeholder="Additional notes"></textarea>
+      <input type="text" name="language" placeholder="Language">
+      <input type="text" name="tags" placeholder="Tags">
+    </form>
+  </div>
+</div>
+
+
+<header id="user_header">
+  <h4 id="add_snippet"><a href="/create">Add Snippet</a></h4>
+  <h1>Quick Snippets</h1>
+  <div class="logout_button">
+    <h4 id="welcome">Welcome, {{username}}</h4>
+    <p><a href="/logout">Log Out</a></p>
+  </div>
+</header>
+<div class="user_container">
+
+</div>

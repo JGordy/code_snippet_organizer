@@ -5,17 +5,14 @@ const Schema = mongoose.Schema;
 
 mongoose.connect("mongodb://localhost:27017/codeSnippets");
 
-const snippetsSchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
   username: { type: String, unique: true, lowercase: true, required: true },
-  title: {
-    type: String, unique: true, lowercase: true, required: true },
-  code: { type: String, required: true},
-  notes: String,
-  language: {type: String, required: true},
-  tags: [String]
+  passwordHash: { type: String, required: true },
+  name: {type: String, required: true},
+  email: String
 });
 
-snippetsSchema.virtual('password')
+userSchema.virtual('password')
     .get(function() {
         return null
     })
@@ -24,11 +21,11 @@ snippetsSchema.virtual('password')
         this.passwordHash = hash;
     })
 
-snippetsSchema.methods.authenticate = function (password) {
+userSchema.methods.authenticate = function (password) {
   return bcrypt.compareSync(password, this.passwordHash);
 }
 
-snippetsSchema.statics.authenticate = function(username, password, done) {
+userSchema.statics.authenticate = function(username, password, done) {
     this.findOne({
         username: username
     }, function(err, user) {
@@ -42,6 +39,6 @@ snippetsSchema.statics.authenticate = function(username, password, done) {
     })
 };
 
-const Snippet = mongoose.model("snippets", snippetsSchema);
+const User = mongoose.model("user", userSchema);
 
-module.exports = Snippet;
+module.exports = User;

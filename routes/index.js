@@ -1,5 +1,5 @@
 const express = require("express");
-const User = require("../models/snippets");
+const User = require("../models/user");
 const router = express.Router();
 const mongoose = require("mongoose");
 const passport = require("passport");
@@ -60,6 +60,12 @@ router.post("/signup", function(req, res) {
 router.get("/user", requireLogin, function(req, res) {
   res.render("user", {username: req.user.username});
 });
+
+router.get("/create", requireLogin, function(req, res) {
+  res.render("createSnippet", {username: req.user.username});
+})
+
+// router.get("/save", )
 
 router.get("/logout", function(req, res) {
   req.logout();
