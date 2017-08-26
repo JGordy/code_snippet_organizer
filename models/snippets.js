@@ -9,21 +9,21 @@ const userSchema = new mongoose.Schema({
   username: { type: String, unique: true, lowercase: true, required: true },
   passwordHash: { type: String, required: true },
   name: {type: String, required: true},
-  email: String,
-  avatar: String,
-  university: String,
-  job: String,
-  company: String,
-  skills: [String],
-  phone: String,
-  address: {
-    street_num: Number,
-    street_name: String,
-    city: String,
-    state_or_province: String,
-    postal_code: Number,
-    country: String
-  }
+  email: String
+  // avatar: String,
+  // university: String,
+  // job: String,
+  // company: String,
+  // skills: [String],
+  // phone: String,
+  // address: {
+  //   street_num: Number,
+  //   street_name: String,
+  //   city: String,
+  //   state_or_province: String,
+  //   postal_code: Number,
+  //   country: String
+  // }
 });
 
 userSchema.virtual('password')
@@ -53,6 +53,6 @@ userSchema.statics.authenticate = function(username, password, done) {
     })
 };
 
-const User = mongoose.model("Snippet", userSchema);
+const User = mongoose.model("Snippets", userSchema);
 
 module.exports = User;

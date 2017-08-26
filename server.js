@@ -1,22 +1,22 @@
 const express         = require("express");
 const mustacheExpress = require("mustache-express");
 const path            = require("path");
-const routes          = require("./routes/index");
+const routes          = require("./routes/index.js");
 const morgan          = require("morgan");
-onst mongoose         = require("mongoose");
+const mongoose        = require("mongoose");
 const bodyParser      = require("body-parser");
 const passport        = require('passport');
 const LocalStrategy   = require('passport-local').Strategy;
 const session         = require('express-session');
 const flash           = require('express-flash-messages');
-const User            = require("./models/user");
+const User            = require("./models/snippets");
 
 const app = express();
 
 app.use(express.static(path.join(__dirname, "public")));
 
 app.engine("mustache", mustacheExpress());
-app.set("views", path.join(__dirname, "views"));
+app.set("views", path.join(__dirname, "./views"));
 app.set("view engine", "mustache");
 app.set("layout", "layout");
 
@@ -70,5 +70,5 @@ app.use(flash());
 app.use(routes);
 
 app.listen(3000, function() {
-  console.log(App is running on localhost:3000);
+  console.log("App is running on localhost:3000");
 });

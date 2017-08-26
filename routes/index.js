@@ -1,8 +1,8 @@
 const express = require("express");
-const User = require("../models/snippet");
+const User = require("../models/snippets");
 const router = express.Router();
 const mongoose = require("mongoose");
-const passport = require('passport');
+const passport = require("passport");
 
 mongoose.connect("mongodb://localhost:27017/codeSnippets");
 
@@ -22,8 +22,6 @@ const login = function (req, res, next) {
     next();
   }
 };
-
-////////////////////////////////////////////////////
 
 router.get("/", login, function(req, res) {
 
@@ -46,7 +44,9 @@ router.get("/signup", function(req, res) {
 router.post("/signup", function(req, res) {
   User.create({
     username: req.body.username,
-    password: req.body.password
+    password: req.body.password,
+    name: req.body.name,
+    email: req.body.email
   }).then(function(data) {
     console.log(data);
     res.redirect("/");
