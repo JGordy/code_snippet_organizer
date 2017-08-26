@@ -1,5 +1,6 @@
 const express = require("express");
 const User = require("../models/user");
+const Snippet = require("../models/snippets")
 const router = express.Router();
 const mongoose = require("mongoose");
 const passport = require("passport");
@@ -22,6 +23,7 @@ const login = function (req, res, next) {
     next();
   }
 };
+
 
 router.get("/", login, function(req, res) {
 
@@ -58,14 +60,72 @@ router.post("/signup", function(req, res) {
 });
 
 router.get("/user", requireLogin, function(req, res) {
-  res.render("user", {username: req.user.username});
+
+  Snippet.find({})
+    .then(function(data) {
+      currentUser = req.user;
+      res.render("user", {snippets: data, username: req.user.username})
+    })
+    .catch(function(err) {
+      console.log(err);
+      next(err);
+    });
 });
 
 router.get("/create", requireLogin, function(req, res) {
   res.render("createSnippet", {username: req.user.username});
 })
 
-// router.get("/save", )
+router.post("/save", requireLogin, function(req, res) {
+ Snippet.create({
+   username: req.user.username,
+   title: req.body.title,
+   code: req.body.code,
+   notes: req.body.notes,
+   language: req.body.language,
+   tags: req.body.tags
+ }).then(function(data) {
+   console.log(data);
+   res.redirect("/user");
+ }).catch(function(err) {
+   console.log(err);
+   res.redirect("/create");
+ });
+});
+
+router.get("/:language", function(req, res) {
+
+  res.render("user", );
+})
+
+
+router.get("/singleSnippet/:id", function(req, res) {
+
+  Snippet.find({_id: req.params.id}).sort("name")
+    .then(function(users) {
+      // console.log(users);
+      res.render("singleSnippet", {snippets: users, username: req.body.username})
+    })
+    .catch(function(err) {
+      console.log(err);
+      // next(err);
+    });
+});
+
+router.get("/remove/:id", function(req, res) {
+  let reqId = req.params.id;
+  console.log("reqId: ", reqId);
+  // let newId = reqId.substr(1);
+  Snippet.remove({ _id: reqId }, function(err) {
+      if (!err) {
+        console.log("Yay");
+      }
+      else {
+        console.log(err);
+      }
+  });
+  res.redirect("/user");
+});
 
 router.get("/logout", function(req, res) {
   req.logout();

@@ -5,11 +5,13 @@
   <div class="create_snippet">
     <form class="snippet_form" action="/save" method="post">
       <h2>Create your snippet</h2>
+      <input type="text" name="username" value="{{username}}" placeholder="Username" disabled>
       <input id="snippet_title" type="text" name="title" placeholder="Title" autofocus>
-      <textarea name="code" rows="10" cols="50" placeholder="Enter your snippet here"></textarea>
+      <textarea name="code" rows="8" cols="50" placeholder="Enter your snippet here"></textarea>
       <textarea name="notes" rows="4" cols="50" placeholder="Additional notes"></textarea>
       <input type="text" name="language" placeholder="Language">
       <input type="text" name="tags" placeholder="Tags">
+      <button type="submit" name="button">Save Changes</button>
     </form>
   </div>
 </div>

@@ -7,5 +7,14 @@
   </div>
 </header>
 <div class="user_container">
-
+  {{#snippets}}
+  <a class="snippet_container" href="/singleSnippet/{{id}}">
+    <h3 class="title">{{title}}</h3>
+    <h4 class="language">{{language}}</h4>
+    <h4 class="username">{{username}}</h4>
+    <p class="code">{{code}}</p>
+    <p class="notes">{{notes}}</p>
+    <p class="tags">{{tags}}</p>
+  </a>
+  {{/snippets}}
 </div>
