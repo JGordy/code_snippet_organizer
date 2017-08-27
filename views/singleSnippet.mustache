@@ -20,7 +20,10 @@
         <p class="code"><code>{{code}}</code></p>
         <p class="notes">Additonal Notes: {{notes}}</p>
       </a>
-      <p class="tags">Tags: {{#tags}}<a href="/tags/{{tags}}">{{.}}</a>{{/tags}}</p>
+      <div class="delete_row">
+        <p class="tags">Tags: {{#tags}}<a href="/tags/{{tags}}">{{.}}</a>{{/tags}}</p>
+        <p><a href="/remove/{{id}}">Delete</a></p>
+      </div>
     </div>
   </div>
   {{/snippets}}

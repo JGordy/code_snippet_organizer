@@ -187,8 +187,19 @@ header h1 {
   margin-top: 10px;
 }
 
-xmp {
+code {
   color: gray;
+}
+
+.delete_row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.delete_row p:last-child a {
+  color: darkcyan;
+  text-decoration: none;
 }
 /********************************************
       create snippet page styling
