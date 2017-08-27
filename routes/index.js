@@ -93,23 +93,43 @@ router.post("/save", requireLogin, function(req, res) {
  });
 });
 
-router.get("/:language", function(req, res) {
-
-  res.render("user", );
-})
-
-
 router.get("/singleSnippet/:id", function(req, res) {
 
   Snippet.find({_id: req.params.id}).sort("name")
     .then(function(users) {
       // console.log(users);
-      res.render("singleSnippet", {snippets: users, username: req.body.username})
+      res.render("singleSnippet", {snippets: users, username: req.user.username})
     })
     .catch(function(err) {
       console.log(err);
       // next(err);
     });
+});
+
+router.get("/language/:language", function(req, res) {
+console.log("req.params: ", req.params);
+  Snippet.find({language: req.params.language})
+    .then(function(data) {
+      console.log(data);
+      res.render("user", {snippets: data, username: req.user.username})
+    .catch(function(err) {
+      console.log(err);
+      res.redirect("/user");
+      })
+    })
+});
+
+router.get("/tags/:tags", function(req, res) {
+console.log("req.params: ", req.params);
+  Snippet.find({tags: req.params.tags})
+    .then(function(data) {
+      console.log(data);
+      res.render("user", {snippets: data, username: req.user.username})
+    .catch(function(err) {
+      console.log(err);
+      res.redirect("/user");
+      })
+    })
 });
 
 router.get("/remove/:id", function(req, res) {

@@ -1,20 +1,27 @@
 <header id="user_header">
   <h4 id="add_snippet"><a href="/create">Add Snippet</a></h4>
-  <h1>Quick Snippets</h1>
+  <h1><a href="/user">Quick Snippets</a></h1>
   <div class="logout_button">
     <h4 id="welcome">Welcome, {{username}}</h4>
     <p><a href="/logout">Log Out</a></p>
   </div>
 </header>
+
 <div class="user_container">
   {{#snippets}}
-  <a class="snippet_container" href="/singleSnippet/{{id}}">
-    <h3 class="title">{{title}}</h3>
-    <h4 class="language">{{language}}</h4>
-    <h4 class="username">{{username}}</h4>
-    <p class="code">{{code}}</p>
-    <p class="notes">{{notes}}</p>
-    <p class="tags">{{tags}}</p>
-  </a>
+  <div class="snippet_container" >
+    <h4 class="language"><a href="/language/{{language}}">{{language}}</a></h4>
+    <div class="partial_container">
+      <a href="/singleSnippet/{{id}}">
+        <div class="title_container">
+          <h3 class="title">{{title}}</h3>
+          <h4 class="username">{{username}}</h4>
+        </div>
+        <p class="code"><code>{{code}}</code></p>
+        <p class="notes">Additonal Notes: {{notes}}</p>
+      </a>
+      <p class="tags">Tags: {{#tags}}<a href="/tags/{{tags}}">{{.}}</a>{{/tags}}</p>
+    </div>
+  </div>
   {{/snippets}}
 </div>

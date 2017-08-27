@@ -1,4 +1,4 @@
-*, html {
+* {
   margin: 0;
   padding: 0;
 }
@@ -8,7 +8,11 @@ body {
 }
 
 header {
-margin: 10px 20px;
+  background-color: white;
+  height: 75px;
+  padding: 15px 5px 0px 5px;
+  position: fixed;
+  width: 100%;
 }
 
 header h1 {
@@ -63,13 +67,19 @@ header h1 {
 #user_header {
   display: flex;
   justify-content: space-between;
-  margin: 10px 20px;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+#user_header a {
+  text-decoration: none;
+  color: #C58512;
 }
 
 #add_snippet a {
   border-bottom: 2px solid #C58512;
   color: gray;
   margin-top: 10px;
+  padding-left: 10px;
   padding-bottom: 5px;
   text-decoration: none;
 }
@@ -78,6 +88,10 @@ header h1 {
   border-bottom: 2px solid #C58512;
   color: gray;
   padding-bottom: 5px;
+}
+
+.logout_button {
+  margin-right: 25px;
 }
 
 .logout_button p {
@@ -92,9 +106,90 @@ header h1 {
 
 .user_container {
   display: flex;
-  margin-top: 50px;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  padding-top: 115px;
 }
 
+.snippet_container {
+  border: 2px solid gray;
+  border-radius: 12px;
+  display: flex;
+  height: 300px;
+  flex-basis: 30%;
+  margin: 0px 0px 25px 0px;
+}
+
+.snippet_container a {
+  text-decoration: none;
+}
+
+.language {
+  border: 2px solid darkgray;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  background-color: darkgray;
+  padding: 4px;
+  margin-right: 5px;
+  vertical-align: middle;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  text-transform: uppercase;
+}
+
+.language a {
+  text-shadow: 2px 2px 2px black;
+  color: #C58512;
+  font-size: 24px;
+  letter-spacing: 0.3em;
+  padding-top: 10px;
+}
+
+.partial_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 10px;
+  margin: 10px;
+}
+
+.partial_container a {
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.title_container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.title, .username, .tags a {
+  color: #C58512;
+}
+
+.title {
+  text-transform: uppercase;
+}
+
+.code, .notes {
+  color: gray;
+}
+
+.code {
+  border-top: 2px solid #C58512;
+  border-bottom: 2px solid #C58512;
+  padding: 10px 0px;
+}
+
+.tags {
+  margin-top: 10px;
+}
+
+xmp {
+  color: gray;
+}
 /********************************************
       create snippet page styling
 **********************************************/
