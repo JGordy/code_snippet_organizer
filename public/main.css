@@ -7,14 +7,6 @@ body {
   font-family: sans-serif;
 }
 
-header {
-  background-color: white;
-  height: 75px;
-  padding: 15px 5px 0px 5px;
-  position: fixed;
-  width: 100%;
-}
-
 header h1 {
   color: #C58512;
   text-align: center;
@@ -64,10 +56,22 @@ header h1 {
   width: 200px;
 }
 
+#login_header {
+  background-color: white;
+  height: 75px;
+  padding: 15px 5px 0px 5px;
+  width: 100%;
+}
+
 #user_header {
-  display: flex;
-  justify-content: space-between;
+  background-color: white;
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.5);
+  display: flex;
+  height: 75px;
+  justify-content: space-between;
+  padding:  15px 5px 0px 5px;
+  position: fixed;
+  width: 100%;
 }
 
 #user_header a {
@@ -107,7 +111,7 @@ header h1 {
 .user_container {
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-around;
+  justify-content: flex-start;
   padding-top: 115px;
 }
 
@@ -117,7 +121,7 @@ header h1 {
   display: flex;
   height: 300px;
   flex-basis: 30%;
-  margin: 0px 0px 25px 0px;
+  margin: 0px 0px 25px 27px;
 }
 
 .snippet_container a {
