@@ -5,7 +5,7 @@ const router = express.Router();
 const mongoose = require("mongoose");
 const passport = require("passport");
 
-mongoose.connect("mongodb://localhost:27017/codeSnippets");
+// mongoose.connect("mongodb://localhost:27017/codeSnippets");
 
 const requireLogin = function (req, res, next) {
   if (req.user) {
@@ -60,7 +60,6 @@ router.post("/signup", function(req, res) {
 });
 
 router.get("/user", requireLogin, function(req, res) {
-
   Snippet.find({})
     .then(function(data) {
       currentUser = req.user;
@@ -77,6 +76,8 @@ router.get("/create", requireLogin, function(req, res) {
 })
 
 router.post("/save", requireLogin, function(req, res) {
+  let arr = req.body.tags.split(" ");
+
  Snippet.create({
    username: req.user.username,
    title: req.body.title,
@@ -86,7 +87,7 @@ router.post("/save", requireLogin, function(req, res) {
    tags: req.body.tags
  }).then(function(data) {
    console.log(data);
-   res.redirect("/user");
+   res.render("/user", {snippets: data, username: req.user.username});
  }).catch(function(err) {
    console.log(err);
    res.redirect("/create");

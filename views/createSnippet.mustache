@@ -26,5 +26,20 @@
   </div>
 </header>
 <div class="user_container">
-
+  {{#snippets}}
+  <div class="snippet_container" >
+    <h4 class="language"><a href="/language/{{language}}">{{language}}</a></h4>
+    <div class="partial_container">
+      <a href="/singleSnippet/{{id}}">
+        <div class="title_container">
+          <h3 class="title">{{title}}</h3>
+          <h4 class="username">{{username}}</h4>
+        </div>
+        <p class="code"><code>{{code}}</code></p>
+        <p class="notes">Additional Notes: {{notes}}</p>
+      </a>
+      <p class="tags">Tags: {{#tags}}<a href="/tags/{{tags}}">{{.}}</a>{{/tags}}</p>
+    </div>
+  </div>
+  {{/snippets}}
 </div>

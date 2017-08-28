@@ -218,6 +218,7 @@ code {
   margin-top: 0px;
   margin-left: 0px;
   padding-top: 25px;
+  z-index: 9000;
 }
 
 .back_button {
