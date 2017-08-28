@@ -76,21 +76,24 @@ router.get("/create", requireLogin, function(req, res) {
   res.render("createSnippet", {username: req.user.username});
 })
 
+// "javascript fun test hello"
 router.post("/save", requireLogin, function(req, res) {
- Snippet.create({
-   username: req.user.username,
-   title: req.body.title,
-   code: req.body.code,
-   notes: req.body.notes,
-   language: req.body.language,
-   tags: req.body.tags
- }).then(function(data) {
-   console.log(data);
-   res.redirect("/user");
- }).catch(function(err) {
-   console.log(err);
-   res.redirect("/create");
- });
+  let arr = req.body.tags.split(" ");
+
+   Snippet.create({
+     username: req.user.username,
+     title: req.body.title,
+     code: req.body.code,
+     notes: req.body.notes,
+     language: req.body.language,
+     tags: arr
+   }).then(function(data) {
+     console.log(data);
+     res.redirect("/user");
+   }).catch(function(err) {
+     console.log(err);
+     res.redirect("/create");
+   });
 });
 
 router.get("/singleSnippet/:id", function(req, res) {
@@ -107,26 +110,25 @@ router.get("/singleSnippet/:id", function(req, res) {
 });
 
 router.get("/language/:language", function(req, res) {
-console.log("req.params: ", req.params);
   Snippet.find({language: req.params.language})
     .then(function(data) {
-      console.log(data);
+
       res.render("user", {snippets: data, username: req.user.username})
     .catch(function(err) {
-      console.log(err);
+
       res.redirect("/user");
       })
     })
 });
 
 router.get("/tags/:tags", function(req, res) {
-console.log("req.params: ", req.params);
+
   Snippet.find({tags: req.params.tags})
     .then(function(data) {
-      console.log(data);
+
       res.render("user", {snippets: data, username: req.user.username})
     .catch(function(err) {
-      console.log(err);
+
       res.redirect("/user");
       })
     })
