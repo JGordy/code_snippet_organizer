@@ -14,33 +14,33 @@ const snippetsSchema = new mongoose.Schema({
   language: {type: String, required: true},
   tags: [String]
 });
-
-snippetsSchema.virtual('password')
-    .get(function() {
-        return null
-    })
-    .set(function(value) {
-        const hash = bcrypt.hashSync(value, 8);
-        this.passwordHash = hash;
-    })
-
-snippetsSchema.methods.authenticate = function (password) {
-  return bcrypt.compareSync(password, this.passwordHash);
-}
-
-snippetsSchema.statics.authenticate = function(username, password, done) {
-    this.findOne({
-        username: username
-    }, function(err, user) {
-        if (err) {
-            done(err, false)
-        } else if (user && user.authenticate(password)) {
-            done(null, user)
-        } else {
-            done(null, false)
-        }
-    })
-};
+//
+// snippetsSchema.virtual('password')
+//     .get(function() {
+//         return null
+//     })
+//     .set(function(value) {
+//         const hash = bcrypt.hashSync(value, 8);
+//         this.passwordHash = hash;
+//     })
+//
+// snippetsSchema.methods.authenticate = function (password) {
+//   return bcrypt.compareSync(password, this.passwordHash);
+// }
+//
+// snippetsSchema.statics.authenticate = function(username, password, done) {
+//     this.findOne({
+//         username: username
+//     }, function(err, user) {
+//         if (err) {
+//             done(err, false)
+//         } else if (user && user.authenticate(password)) {
+//             done(null, user)
+//         } else {
+//             done(null, false)
+//         }
+//     })
+// };
 
 const Snippet = mongoose.model("snippets", snippetsSchema);
 
