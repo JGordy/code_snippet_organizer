@@ -9,18 +9,21 @@
 
 <div class="user_container">
   {{#snippets}}
-  <div class="snippet_container" >
+  <div class="singleSnippet" >
     <h4 class="language"><a href="/language/{{language}}">{{language}}</a></h4>
-    <div class="partial_container">
-      <a href="/singleSnippet/{{username}}/{{id}}">
+    <div class="partial_single">
+      <a >
         <div class="title_container">
           <h3 class="title">{{title}}</h3>
           <h4 class="username">{{username}}</h4>
         </div>
-        <p class="code"><code>{{code}}</code></p>
-        <p class="notes">Additional Notes: {{notes}}</p>
+        <p class="single_code"><code>{{code}}</code></p>
+        <p class="notes">Additonal Notes: {{notes}}</p>
       </a>
-      <p class="tags">Tags: {{#tags}}<a href="/tags/{{.}}">{{.}}</a>{{/tags}}</p>
+      <div class="delete_row">
+        <p class="tags">Tags: {{#tags}}<a href="/tags/{{tags}}">{{.}}</a>{{/tags}}</p>
+        <p class="delete"><a href="/remove/{{username}}/{{id}}">Delete</a></p>
+      </div>
     </div>
   </div>
   {{/snippets}}

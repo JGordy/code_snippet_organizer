@@ -12,6 +12,15 @@ header h1 {
   text-align: center;
 }
 
+.container {
+  background-image: url("./images/ideas.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100%;
+}
+
 .form_container {
   display: flex;
   justify-content: center;
@@ -79,11 +88,15 @@ header h1 {
   color: #C58512;
 }
 
+#add_snippet {
+  margin-left: 10px;
+}
+
 #add_snippet a {
   border-bottom: 2px solid #C58512;
   color: gray;
   margin-top: 10px;
-  padding-left: 10px;
+  /*padding-left: 10px;*/
   padding-bottom: 5px;
   text-decoration: none;
 }
@@ -118,10 +131,13 @@ header h1 {
 .snippet_container {
   border: 2px solid gray;
   border-radius: 12px;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
   display: flex;
-  height: 300px;
+  height: 350px;
   flex-basis: 30%;
+  max-width: 30%;
   margin: 0px 0px 25px 27px;
+  background-color: rgba(255, 255, 255, 0.9);
 }
 
 .snippet_container a {
@@ -147,6 +163,7 @@ header h1 {
   font-size: 24px;
   letter-spacing: 0.3em;
   padding-top: 10px;
+  text-decoration: none;
 }
 
 .partial_container {
@@ -189,6 +206,11 @@ header h1 {
 
 .tags {
   margin-top: 10px;
+  display: flex;
+}
+
+.tags a {
+  margin-left: 5px;
 }
 
 code {
@@ -201,14 +223,14 @@ code {
   align-items: flex-end;
 }
 
-.delete_row p:last-child a {
+.delete a {
   color: darkcyan;
   text-decoration: none;
 }
+
 /********************************************
       create snippet page styling
 **********************************************/
-
 
 .mask {
   background-color: rgba(0, 0, 0, 0.4);
@@ -274,4 +296,45 @@ textarea {
   font-size: 18px;
   margin-bottom: 15px;
   padding: 3px;
+}
+/***********************************************
+ single and edit snippet styling
+ **********************************************/
+
+.singleSnippet {
+    background-color: rgba(255, 255, 255, 0.9);
+  border: 2px solid gray;
+  border-radius: 12px;
+  display: flex;
+  font-size: 24px;
+  margin: 20px auto;
+  height: 450px;
+  width: 75%;
+}
+
+.singleSnippet .language a {
+  font-size: 36px;
+}
+
+.partial_single {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-around;
+  padding: 20px;
+  margin: 0px auto;
+}
+
+.single_code {
+  border-top: 2px solid #C58512;
+  border-bottom: 2px solid #C58512;
+  padding: 45px 0px;
+  font-size: 18px;
+}
+
+.partial_single a {
+  display: flex;
+  flex-flow: column;
+  height: 80%;
+  justify-content: space-between;
+  text-decoration: none;
 }
